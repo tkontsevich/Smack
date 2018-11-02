@@ -40,8 +40,8 @@ class LoginTest : BaseTest() {
     @Before
     fun beforeTestIdlingRegistry() {
         IdlingRegistry.getInstance().register(IdlingResourceHolder.networkIdlingResource)
-
     }
+
     @After
     fun afterTestIdlingRegistry() {
         IdlingRegistry.getInstance().unregister(IdlingResourceHolder.networkIdlingResource)
@@ -94,7 +94,6 @@ class LoginTest : BaseTest() {
 
     @Test
     fun testTappingLogout() {
-
         val navigationScreen = loginAsExistingUser()
         navigationScreen.tapLogoutButton()
         navigationScreen.loginButton.check(matches(isDisplayed()))
