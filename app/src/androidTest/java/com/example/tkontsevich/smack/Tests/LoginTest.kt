@@ -15,7 +15,6 @@ import com.example.tkontsevich.smack.Screens.HomeScreen
 import com.example.tkontsevich.smack.Screens.LoginScreen
 import com.example.tkontsevich.smack.Screens.PasswordValue
 import com.example.tkontsevich.smack.Services.IdlingResourceHolder
-import com.example.tkontsevich.smack.Untilities.UserHelper.createTestUser
 import org.hamcrest.CoreMatchers.not
 import org.junit.Before
 import org.junit.After
