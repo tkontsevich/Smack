@@ -15,6 +15,7 @@ import com.example.tkontsevich.smack.Screens.HomeScreen
 import com.example.tkontsevich.smack.Screens.LoginScreen
 import com.example.tkontsevich.smack.Screens.PasswordValue
 import com.example.tkontsevich.smack.Services.IdlingResourceHolder
+import com.example.tkontsevich.smack.Untilities.UserHelper.createTestUser
 import org.hamcrest.CoreMatchers.not
 import org.junit.Before
 import org.junit.After
@@ -22,6 +23,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.Rule
 import org.junit.runner.RunWith
+import java.lang.Thread.sleep
 
 @RunWith(AndroidJUnit4::class)
 class LoginTest : BaseTest() {
@@ -40,8 +42,8 @@ class LoginTest : BaseTest() {
     @Before
     fun beforeTestIdlingRegistry() {
         IdlingRegistry.getInstance().register(IdlingResourceHolder.networkIdlingResource)
-
     }
+
     @After
     fun afterTestIdlingRegistry() {
         IdlingRegistry.getInstance().unregister(IdlingResourceHolder.networkIdlingResource)
@@ -94,7 +96,6 @@ class LoginTest : BaseTest() {
 
     @Test
     fun testTappingLogout() {
-
         val navigationScreen = loginAsExistingUser()
         navigationScreen.tapLogoutButton()
         navigationScreen.loginButton.check(matches(isDisplayed()))
