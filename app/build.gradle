@@ -4,6 +4,22 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'com.github.tarcv.fork'
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenLocal()
+        maven { url 'https://jitpack.io' }
+    }
+    dependencies {
+        classpath 'com.github.TarCV:fork:4.34.2-beta'
+    }
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -46,4 +62,21 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
     implementation files('libs/commons-lang3-3.8.1.jar')
+}
+
+fork {
+    title = "Espresso tests"
+    testPackage = "com.example.tkontsevich.smack"
+    testClassRegex = "^((?!Abstract).)*Test\$"
+    fallbackToScreenshots = true
+    totalAllowedRetryQuota = 100
+    retryPerTestCaseQuota = 2
+    poolingStrategy {
+        computed {
+            characteristic = "sw"
+            groups {
+                allDevices = 0
+            }
+        }
+    }
 }
