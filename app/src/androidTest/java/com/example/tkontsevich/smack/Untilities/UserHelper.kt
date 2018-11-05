@@ -6,7 +6,7 @@ object UserHelper {
 
     fun createTestUser() {
         val email = "testuser@testsmack.com"
-        //val email = RandomStringUtils.randomAlphanumeric(5) + "@smack.com"
+        // val email = RandomStringUtils.randomAlphanumeric(5) + "@smack.com"
         val password = "123456"
         AuthService.registerUser(email, password) { isRegistered ->
             if (isRegistered)
@@ -18,5 +18,4 @@ object UserHelper {
                 }
         }
     }
-
 }
